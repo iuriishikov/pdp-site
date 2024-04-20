@@ -6,6 +6,7 @@
     user-select: none;
     box-sizing: border-box;
     position: relative;
+    max-width: 2000px;
 }
 
 .texts, .header, .label, .footer {
