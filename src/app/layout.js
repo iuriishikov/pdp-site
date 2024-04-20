@@ -1,4 +1,5 @@
 import {MantineProvider} from "@mantine/core";
+import Wrapper from '@/components/Wrapper'
 
 export const metadata = {
   title: 'Next.js',
@@ -9,9 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <MantineProvider>
-          {children}
-        </MantineProvider>
+        <Wrapper>
+            {children}
+        </Wrapper>
       </body>
     </html>
   )

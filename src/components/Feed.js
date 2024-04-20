@@ -5,7 +5,8 @@ import ReactCurvedText from "react-curved-text";
 import {useEffect, useState} from "react";
 import {useIntersection, useViewportSize, useWindowScroll} from "@mantine/hooks";
 import {Transition} from "@mantine/core";
-import Lottie from "lottie-react";
+import dynamic from 'next/dynamic';
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import butterflyAnimationData from '@/animations/butterfly.json'
 import Link from "next/link";
 import Image from 'next/image'
@@ -72,38 +73,12 @@ function TextItem({children}) {
 }
 
 export default function Feed({}) {
-    const {width: viewportWidth, height: viewportHeight} = useViewportSize()
-    const [scroll, setScroll] = useWindowScroll()
-
-    function handleShare() {
-        const url = window.location.href
-
-        navigator.share({url: url})
-    }
 
     return (
         <div className={styles.container}>
             <div className={styles.background}>
                 <Lottie animationData={butterflyAnimationData} width={200} height={200} autoplay={true} loop={true} />
             </div>
-
-            <header data-is-mounted={(scroll.y < 10).toString()} className={styles.header}>
-                <Link href={'/'} onClick={handleShare} className={styles.header_item}>
-                    Share
-                </Link>
-
-                <Link href={'/about'} className={styles.header_item}>
-                    About
-                </Link>
-
-                <Link href={'/projects'} className={styles.header_item}>
-                    Projects
-                </Link>
-
-                <Link href={'/contact'} className={styles.header_item}>
-                    Contact
-                </Link>
-            </header>
 
             <div className={styles.label}>
                 <span className={styles.label_italic}>
@@ -172,37 +147,6 @@ export default function Feed({}) {
             {/*        </SwiperSlide>*/}
             {/*    </Swiper>*/}
             {/*</div>*/}
-
-
-            <footer className={styles.footer}>
-                <h1>
-                    CONTACT
-                </h1>
-
-                <div className={styles.footer_personal_contacts}>
-                    <a href='mailto:info@pdp.group' className={styles.footer_personal_contact}>
-                        info@pdp.group
-                    </a>
-
-                    <a className={styles.footer_personal_contact}>
-                        +7 (925) 504-68-21
-                    </a>
-                </div>
-
-                <div className={styles.footer_links}>
-                    <a>
-                        FACEBOOK
-                    </a>
-
-                    <a>
-                        INSTAGRAM
-                    </a>
-
-                    <a>
-                        TELEGRAM
-                    </a>
-                </div>
-            </footer>
         </div>
     )
 }
