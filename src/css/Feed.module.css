@@ -6,12 +6,9 @@
     user-select: none;
     box-sizing: border-box;
     position: relative;
-    box-sizing: border-box;
-    background-color: #faffe8;
-    background: linear-gradient(90deg, #ffffff,#ffda8a);
 }
 
-.texts, .header, .label {
+.texts, .header, .label, .footer {
     z-index: 2;
 }
 
@@ -24,14 +21,14 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .texts, .header, .label, .projects {
+    .texts, .header, .label, .projects, .footer {
         padding-left: 20px;
         padding-right: 20px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .texts, .header, .label, .projects {
+    .texts, .header, .label, .projects, .footer {
         padding-left: 50px;
         padding-right: 50px;
     }
@@ -146,25 +143,11 @@
 .label_regular {
     font-family: martin-mono;
     font-size: 30px;
-    animation: label_fade_in 200ms linear;
 }
 
 .label_italic {
     font-size: 50px;
     font-family: dm-serif-display-italic;
-    animation: label_fade_in 400ms linear;
-}
-
-@keyframes label_fade_in {
-    from {
-        opacity: 0;
-        /*transform: translateY(-100px);*/
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
 }
 
 .projects_swiper {
@@ -172,48 +155,44 @@
     width: 100% !important;
 }
 
-.project_logo {
-    width: 50px;
+.projects_label {
+    font-family: inter-regular;
+    font-size: 50px;
+    color: #000;
 }
 
-.project_slide {
-    width: max-content !important;
-    height: max-content !important;
+.projects_container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: max-content ;
 }
 
 .project {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    text-decoration: none !important;
-    justify-content: flex-start;
+    width: max-content !important;
+    height: max-content !important;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px solid #000;
 }
 
-.project_label {
-    font-family: inter-regular;
-    font-weight: 600;
-    color: #000;
-    font-size: 20px;
-}
-
-.project_desc {
-    font-family: inter-regular;
-    font-size: 16px;
-    color: #d9d9d9;
-    font-style: italic;
-    text-decoration: none !important;
-}
-
-.project_preview {
-    width: 300px;
-    height: 300px;
-    text-decoration: none !important;
-    object-fit: cover;
+.project_logo {
+    height: 100px;
+    fill: #000;
 }
 
 .footer {
-    height: 400px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: transparent;
+    background: none;
+}
+
+.footer_links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
 }

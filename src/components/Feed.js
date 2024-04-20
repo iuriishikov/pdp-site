@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import styles from '@/css/Feed.module.css'
 import ReactCurvedText from "react-curved-text";
 import {useEffect, useState} from "react";
@@ -11,106 +12,9 @@ import Image from 'next/image'
 import 'swiper/css';
 import MicrosoftLogo from '@/icons/miscrosoft-logo.svg'
 import PhilipsLogo from '@/icons/philips-logo.svg'
-import NestleLogo from '@/icons/philips-logo.svg'
+import NestleLogo from '@/icons/nestle-logo.svg'
+import {Autoplay} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
-
-const projects = [
-    {
-        label: 'Microsoft',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/microsoft.jpeg')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    },
-    {
-        label: 'Philips Corp',
-        desc: 'Microsoft corp',
-        previewSrc: require('@/icons/philips.webp')
-    }
-]
 
 function CurvedText({children, cx=0, width=0, height=0, cy=0, rx=0, ry=0}) {
     const [wasInViewport, setWasInViewport] = useState(false)
@@ -167,22 +71,6 @@ function TextItem({children}) {
     )
 }
 
-function Project({previewSrc, label, desc}) {
-    return (
-        <a className={styles.project}>
-            <Image src={previewSrc} className={styles.project_preview} />
-
-            <div className={styles.project_label}>
-                {label}
-            </div>
-
-            <div className={styles.project_desc}>
-                {desc}
-            </div>
-        </a>
-    )
-}
-
 export default function Feed({}) {
     const {width: viewportWidth, height: viewportHeight} = useViewportSize()
     const [scroll, setScroll] = useWindowScroll()
@@ -197,7 +85,6 @@ export default function Feed({}) {
         <div className={styles.container}>
             <div className={styles.background}>
                 <Lottie animationData={butterflyAnimationData} width={200} height={200} autoplay={true} loop={true} />
-
             </div>
 
             <header data-is-mounted={(scroll.y < 10).toString()} className={styles.header}>
@@ -254,17 +141,67 @@ export default function Feed({}) {
                 </TextItem>
             </div>
 
-            <Swiper slidesPerView={'auto'} autoplay={true} direction={'horizontal'} spaceBetween={30} className={styles.projects_swiper}>
-                {projects.map((projectData) =>
-                    <SwiperSlide key={projectData} className={styles.project_slide}>
-                        <Project previewSrc={projectData.previewSrc} label={projectData.label} desc={projectData.desc} />
-                    </SwiperSlide>
-                )}
-            </Swiper>
+            {/*<div className={styles.projects_container}>*/}
+            {/*    <div className={styles.projects_label}>*/}
+            {/*        PROJECTS*/}
+            {/*    </div>*/}
+
+            {/*    <Swiper*/}
+            {/*        centeredSlides={true}*/}
+            {/*        // autoplay={{*/}
+            {/*        //     delay: 500,*/}
+            {/*        //     disableOnInteraction: false,*/}
+            {/*        // }}*/}
+            {/*        // modules={[Autoplay]}*/}
+            {/*        slidesPerView={'auto'}*/}
+            {/*        // loop={true}*/}
+            {/*        direction={'horizontal'}*/}
+            {/*        spaceBetween={30}*/}
+            {/*        className={styles.projects_swiper}*/}
+            {/*    >*/}
+            {/*        <SwiperSlide className={styles.project}>*/}
+            {/*            <MicrosoftLogo className={styles.project_logo} />*/}
+            {/*        </SwiperSlide>*/}
+
+            {/*        <SwiperSlide className={styles.project}>*/}
+            {/*            <PhilipsLogo className={styles.project_logo} />*/}
+            {/*        </SwiperSlide>*/}
+
+            {/*        <SwiperSlide className={styles.project}>*/}
+            {/*            <NestleLogo className={styles.project_logo} />*/}
+            {/*        </SwiperSlide>*/}
+            {/*    </Swiper>*/}
+            {/*</div>*/}
 
 
             <footer className={styles.footer}>
+                <h1>
+                    CONTACT
+                </h1>
 
+                <div className={styles.footer_personal_contacts}>
+                    <a href='mailto:info@pdp.group' className={styles.footer_personal_contact}>
+                        info@pdp.group
+                    </a>
+
+                    <a className={styles.footer_personal_contact}>
+                        +7 (925) 504-68-21
+                    </a>
+                </div>
+
+                <div className={styles.footer_links}>
+                    <a>
+                        FACEBOOK
+                    </a>
+
+                    <a>
+                        INSTAGRAM
+                    </a>
+
+                    <a>
+                        TELEGRAM
+                    </a>
+                </div>
             </footer>
         </div>
     )

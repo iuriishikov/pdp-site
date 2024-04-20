@@ -23,6 +23,11 @@ body {
     src: url("../fonts/inter-regular.ttf") format('truetype');
 }
 
+h1 {
+    font-family: inter-regular;
+    font-weight: 700;
+}
+
 a {
     text-decoration: underline;
     transition-duration: 300ms;
@@ -31,6 +36,10 @@ a {
     text-decoration-color: rgba(0, 0, 0, 0.4);
 }
 
- a:hover {
-     text-decoration-color: #000;
- }
+a:hover {
+    text-decoration-color: #000;
+}
+
+body {
+    background: linear-gradient(90deg, #ffffff,#ffda8a) !important;
+}
