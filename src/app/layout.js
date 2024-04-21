@@ -1,4 +1,3 @@
-import {MantineProvider} from "@mantine/core";
 import Wrapper from '@/components/Wrapper'
 
 export const metadata = {

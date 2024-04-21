@@ -24,8 +24,9 @@ body {
 }
 
 h1 {
-    font-family: inter-regular;
-    font-weight: 700;
+    font-family: martin-mono;
+    font-weight: 300;
+    font-size: 40px;
 }
 
 a {

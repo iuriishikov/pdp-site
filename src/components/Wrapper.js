@@ -6,6 +6,7 @@ import {MantineProvider} from "@mantine/core";
 import {useWindowScroll} from "@mantine/hooks";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import '@/app/globals.css'
 
 function Header() {
     const [scroll, setScroll] = useWindowScroll()

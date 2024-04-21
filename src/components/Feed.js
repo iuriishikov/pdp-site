@@ -16,6 +16,19 @@ import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
 
 
+function ResumeCard() {
+    return
+}
+
+
+
+function ResumesPreview() {
+    return (
+        null
+    )
+}
+
+
 
 function TextItem({children}) {
     const [wasInViewport, setWasInViewport] = useState(false)
