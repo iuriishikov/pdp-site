@@ -11,7 +11,9 @@ import butterflyAnimationData from '@/animations/butterfly.json'
 import MicrosoftLogo from '@/icons/microsoft-logo.svg'
 import NestleLogo from '@/icons/nestle-logo.svg'
 import PhilipsLogo from '@/icons/philips-logo.svg'
+import SABMillerLogo from '@/icons/sab-miller.svg'
 import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
+import BTLogo from '@/icons/b&t-logo.svg'
 
 
 
@@ -133,6 +135,22 @@ export default function Feed({target}) {
 
                         <div className={styles.project_name}>
                             Philips
+                        </div>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <SABMillerLogo className={styles.project_logo} />
+
+                        <div className={styles.project_name}>
+                            SABMiller
+                        </div>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <BTLogo className={styles.project_logo} />
+
+                        <div className={styles.project_name}>
+                            B&T
                         </div>
                     </div>
                 </Marquee>
