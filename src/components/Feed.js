@@ -33,7 +33,7 @@ function TextItem({children}) {
     }, [triggerEntry])
 
     return (
-        <div style={{minHeight: 200}} ref={triggerRef}>
+        <div style={{minHeight: 400}} ref={triggerRef}>
             <Transition duration={3000} transition={'fade'} mounted={wasInViewport}>
                 {(transtionStyles) =>
                     <div style={transtionStyles} className={styles.text_item_root}>
