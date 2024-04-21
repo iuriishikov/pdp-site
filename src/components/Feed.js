@@ -3,7 +3,7 @@ import React from 'react'
 import styles from '@/css/Feed.module.css'
 import Marquee from "react-fast-marquee";
 import {useEffect, useState} from "react";
-import {useIntersection, useScrollIntoView, useViewportSize, useWindowScroll} from "@mantine/hooks";
+import {useElementSize, useIntersection, useScrollIntoView, useViewportSize, useWindowScroll} from "@mantine/hooks";
 import {Transition} from "@mantine/core";
 import dynamic from 'next/dynamic';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
@@ -33,11 +33,12 @@ function TextItem({children}) {
     }, [triggerEntry])
 
     return (
-        <div style={{minHeight: 400}} ref={triggerRef}>
+        <div style={{minHeight: 10}} ref={triggerRef}>
             <Transition duration={3000} transition={'fade'} mounted={wasInViewport}>
                 {(transtionStyles) =>
                     <div style={transtionStyles} className={styles.text_item_root}>
                         <div className={styles.text_item}>
+                            {width}
                             {children}
                         </div>
                     </div>
@@ -46,7 +47,6 @@ function TextItem({children}) {
         </div>
     )
 }
-
 
 
 export default function Feed({target}) {
