@@ -15,7 +15,7 @@ import SABMillerLogo from '@/icons/sab-miller.svg'
 import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
 import Link from "next/link";
-import Image from "next/image";
+import PhilipMorrisLogo from '@/icons/philip-morris-logo.svg'
 
 
 
@@ -192,10 +192,10 @@ export default function Feed({}) {
                     </div>
 
                     <div className={styles.project_card}>
-                        <PhilipsLogo className={styles.project_logo}/>
+                        <PhilipMorrisLogo className={styles.project_logo} />
 
                         <div className={styles.project_name}>
-                            Philips
+                            Philip Morris
                         </div>
                     </div>
 
@@ -208,7 +208,7 @@ export default function Feed({}) {
                     </div>
 
                     <div className={styles.project_card}>
-                        <BTLogo className={styles.project_logo} />
+                        <BTLogo style={{height: 30}} className={styles.project_logo} />
 
                         <div className={styles.project_name}>
                             B&T

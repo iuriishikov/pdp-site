@@ -147,7 +147,9 @@
 
 .project_logo {
     height: 40px;
-    width: 40px;
+    width: auto;
+    overflow: visible;
+    box-sizing: border-box;
     fill: #000;
 }
 
