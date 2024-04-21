@@ -2,6 +2,7 @@
 import styles from '@/css/Resume.module.css'
 import Image from 'next/image'
 import Button from "@/components/Button";
+import {useElementSize} from "@mantine/hooks";
 
 export default function Resume({
     photoSrc,
@@ -21,6 +22,8 @@ export default function Resume({
     function intoMessanger() {
         window.location.href = messangerUrl
     }
+
+    const {width: photoWidth, ref: photoRef} = useElementSize()
 
     return (
         <div className={styles.container}>
@@ -47,7 +50,7 @@ export default function Resume({
                     {workerName}
                 </div>
 
-                <Image src={photoSrc} className={styles.worker_photo}/>
+                <Image ref={photoRef} style={{height: photoWidth}} src={photoSrc} className={styles.worker_photo}/>
             </div>
         </div>
     )

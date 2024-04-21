@@ -19,6 +19,10 @@ function Header() {
 
     return (
         <header data-is-mounted={(scroll.y < 10).toString()} className={styles.header}>
+            <Link href={'/'} className={styles.header_item}>
+                Home
+            </Link>
+
             <Link href={'/'} onClick={handleShare} className={styles.header_item}>
                 Share
             </Link>
