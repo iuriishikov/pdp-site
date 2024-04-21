@@ -15,6 +15,7 @@ import SABMillerLogo from '@/icons/sab-miller.svg'
 import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -149,13 +150,13 @@ export default function Feed({}) {
                     <span>
                         Marzhan Nazarova is a leader in the remuneration management practice. Photo and short resume. Below is the link - download CV - the full version of the CV is downloaded
                     </span>
-
+                
                     <span> </span>
-
+                
                     <Link href={'/team/members/marzhan-nazarova'}>
                         there
                     </Link>
-
+                
                     <span>
                         .
                     </span>
