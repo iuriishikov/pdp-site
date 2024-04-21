@@ -11,7 +11,7 @@ import butterflyAnimationData from '@/animations/butterfly.json'
 import MicrosoftLogo from '@/icons/microsoft-logo.svg'
 import NestleLogo from '@/icons/nestle-logo.svg'
 import PhilipsLogo from '@/icons/philips-logo.svg'
-import Head from "next/head";
+import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 
 
 
@@ -117,6 +117,14 @@ export default function Feed({target}) {
 
                         <div className={styles.project_name}>
                             Nestle
+                        </div>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <SchneiderElectricLogo className={styles.project_logo}/>
+
+                        <div className={styles.project_name}>
+                            Schneider Electric
                         </div>
                     </div>
 
