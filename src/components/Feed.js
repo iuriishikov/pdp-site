@@ -3,12 +3,15 @@ import React from 'react'
 import styles from '@/css/Feed.module.css'
 import Marquee from "react-fast-marquee";
 import {useEffect, useState} from "react";
-import {useIntersection, useViewportSize, useWindowScroll} from "@mantine/hooks";
+import {useIntersection, useScrollIntoView, useViewportSize, useWindowScroll} from "@mantine/hooks";
 import {Transition} from "@mantine/core";
 import dynamic from 'next/dynamic';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import butterflyAnimationData from '@/animations/butterfly.json'
-import 'swiper/css';
+import MicrosoftLogo from '@/icons/microsoft-logo.svg'
+import NestleLogo from '@/icons/nestle-logo.svg'
+import PhilipsLogo from '@/icons/philips-logo.svg'
+import Head from "next/head";
 
 
 
@@ -41,10 +44,19 @@ function TextItem({children}) {
     )
 }
 
-const projectsNames = [
-    "Microsoft", "Schneider Electric", "SABMiller", "Nestle", "Pfizer", "Sanofi", "IRISPHARMA", "Merz Pharma", "Philip Morris", "BI-Group", "B&T", "IBS", "Russian Railways", "Locomotive Technologies", "Helicopter Technologies", "Regional Electric Networks JSC", "Composite Holding Company", "KMG", "Kegok", "KTZ", "KAP", "UHC", "Megapolis Group of Companies", "Domodedovo", "Rusnano", "Supreme Court of the Republic of Kazakhstan", "Ministry of Health of the Republic of Kazakhstan"]
 
-export default function Feed({}) {
+
+export default function Feed({target}) {
+    useEffect(() => {
+        if (target === 'about') {
+            scrollToAbout()
+        } else if (target === 'clients') {
+            scrollToClients()
+        }
+    }, [target])
+
+    const {scrollIntoView: scrollToClients, targetRef: clientsRef} = useScrollIntoView({offset: 60})
+    const {scrollIntoView: scrollToAbout, targetRef: aboutRef} = useScrollIntoView({offset: 60})
 
     return (
         <div className={styles.container}>
@@ -88,15 +100,33 @@ export default function Feed({}) {
                 </TextItem>
             </div>
 
-            <div className={styles.projects}>
-                <h1>PROJECTS</h1>
+            <div ref={clientsRef} className={styles.projects}>
+                <h1>CLIENTS</h1>
 
                 <Marquee speed={100}>
-                    {projectsNames.map((projectName) =>
-                        <div key={projectName} className={styles.project_name}>
-                            {projectName}
+                    <div className={styles.project_card}>
+                        <MicrosoftLogo classNmae={styles.project_logo}/>
+
+                        <div className={styles.project_name}>
+                            Microsoft
                         </div>
-                    )}
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <NestleLogo className={styles.project_logo}/>
+
+                        <div className={styles.project_name}>
+                            Nestle
+                        </div>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <PhilipsLogo className={styles.project_logo}/>
+
+                        <div className={styles.project_name}>
+                            Philips
+                        </div>
+                    </div>
                 </Marquee>
             </div>
         </div>

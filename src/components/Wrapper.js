@@ -37,7 +37,7 @@ function Header() {
     )
 }
 
-function Footer() {
+function ContactForm() {
     const [emailSubject, setEmailSubject] = useState('')
     const [emailBody, setEmailBody] = useState('')
     const [emailAuthor, setEmailAuthor] = useState('')
@@ -53,7 +53,7 @@ function Footer() {
     }
 
     return (
-        <footer className={styles.footer}>
+        <div className={styles.contact_form}>
             <h1>
                 CONTACT
             </h1>
@@ -63,16 +63,36 @@ function Footer() {
             </a>
 
             <div className={styles.footer_email_form}>
-                <Input value={emailAuthor} onChange={(event) => setEmailAuthor(event.target.value)} placeholder={'Who are you?'} />
+                <Input value={emailAuthor} onChange={(event) => setEmailAuthor(event.target.value)}
+                       placeholder={'Who are you?'}/>
 
-                <Input value={emailSubject} onChange={(event) => setEmailSubject(event.target.value)} placeholder={'Subject'} />
+                <Input value={emailSubject} onChange={(event) => setEmailSubject(event.target.value)}
+                       placeholder={'Subject'}/>
 
-                <Input value={emailBody} onChange={(event) => setEmailBody(event.target.value)} multiStrokes={true} placeholder={'Text'} />
+                <Input value={emailBody} onChange={(event) => setEmailBody(event.target.value)} multiStrokes={true}
+                       placeholder={'Text'}/>
 
                 <Button onClick={sendEmail} disabled={!emailBody || !emailSubject || !emailAuthor}>
                     Send
                 </Button>
             </div>
+        </div>
+    )
+}
+
+function Footer() {
+
+    return (
+        <footer className={styles.footer}>
+            <ContactForm />
+
+            <div className={styles.footer_item}>
+                ©2004-2024 PDP Authorship
+            </div>
+
+            <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
+                Site created by
+            </a>
         </footer>
     )
 }
@@ -87,7 +107,7 @@ export default function Wrapper({children}) {
                     {children}
                 </div>
 
-                <Footer />
+                <Footer/>
             </div>
         </MantineProvider>
     )

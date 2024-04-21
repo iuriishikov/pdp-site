@@ -56,12 +56,23 @@
     display: flex;
     z-index: 2;
     flex-direction: column;
-    gap: 30px;
-    background-color: transparent;
-    background: none;
+    gap: 50px;
     width: 100%;
+    justify-content: flex-start;
     box-sizing: border-box;
     padding-bottom: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer {
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .footer {
+        align-items: flex-start;
+    }
 }
 
 .children {
@@ -113,4 +124,20 @@
     gap: 20px;
     width: 100%;
     height: max-content;
+}
+
+.footer_item {
+    font-family: martin-mono;
+    font-size: 20px;
+    color: #000;
+    white-space: nowrap;
+}
+
+.contact_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
