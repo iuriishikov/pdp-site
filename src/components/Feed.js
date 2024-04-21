@@ -149,7 +149,7 @@ export default function Feed({target}) {
 
                     <span> </span>
 
-                    <Link href={'/workers/elena-baryshnikova'}>
+                    <Link href={'/team/members/yelena-baryshnikova'}>
                         there
                     </Link>
 
@@ -163,7 +163,7 @@ export default function Feed({target}) {
 
                     <span> </span>
 
-                    <Link href={'/workers/marzhan-nazarova'}>
+                    <Link href={'/team/members/marzhan-nazarova'}>
                         there
                     </Link>
 

@@ -62,8 +62,7 @@
     position: absolute;
     font-family: dm-serif-display-regular;
     font-size: 50px;
-    color: #fff;
-    -webkit-text-stroke: 1px #000;
+    color: #000;
 }
 
 @media screen and (max-width: 1024px) {
@@ -83,8 +82,8 @@
 .worker_photo {
     object-fit: cover;
     object-position: top;
-    /*opacity: 0.4;*/
-    /*filter: grayscale(100%);*/
+    opacity: 0.4;
+    filter: grayscale(100%);
 }
 
 @media screen and (max-width: 1024px) {
