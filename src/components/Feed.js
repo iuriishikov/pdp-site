@@ -14,19 +14,7 @@ import PhilipsLogo from '@/icons/philips-logo.svg'
 import SABMillerLogo from '@/icons/sab-miller.svg'
 import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
-
-
-function ResumeCard() {
-    return
-}
-
-
-
-function ResumesPreview() {
-    return (
-        null
-    )
-}
+import Link from "next/link";
 
 
 
@@ -70,8 +58,8 @@ export default function Feed({target}) {
         }
     }, [target])
 
-    const {scrollIntoView: scrollToClients, targetRef: clientsRef} = useScrollIntoView({offset: 60})
-    const {scrollIntoView: scrollToAbout, targetRef: aboutRef} = useScrollIntoView({offset: 60})
+    const {scrollIntoView: scrollToClients, targetRef: clientsRef} = useScrollIntoView({offset: 0})
+    const {scrollIntoView: scrollToAbout, targetRef: aboutRef} = useScrollIntoView({offset: 0})
 
     return (
         <div className={styles.container}>
@@ -99,7 +87,8 @@ export default function Feed({target}) {
 
             <div className={styles.texts}>
                 <TextItem>
-                    PDP (Performance Development Partners) was created in 2004 and is operating now in 3 continents. More than 20 years we help our clients to make the world a better place by making the structure of their companies and management principals more equitable.
+                    <h1>PDP (Performance Development Partners) </h1>
+                    <span>was created in 2004 and is operating now in 3 continents. More than 20 years we help our clients to make the world a better place by making the structure of their companies and management principals more equitable.</span>
                 </TextItem>
 
                 <TextItem>
@@ -108,11 +97,80 @@ export default function Feed({target}) {
 
                 <TextItem>
                     We want to influence positive change in the world and help our clients in a rapidly changing world. We accelerate sustainable and inclusive growth and help our clients create meaningful and lasting change.
+                    Our mission is to help organizations, teams and people unlock their potential and achieve outstanding results.
                 </TextItem>
 
                 <TextItem>
-                    Our mission is to help organizations, teams and people unlock their potential and achieve outstanding results.
+                    <h1>
+                        Practices
+                        Organizational Effectiveness Practice
+                    </h1>
+
+                    <span>
+                        «Culture eats strategy for breakfast»
+                        Peter Drucker
+                        We are engaged in management consulting, including the development and implementation of strategies, increasing government and organizational effectiveness, optimizing organizational structures and management changes.
+
+                        It is important to us to bring value to our clients. We work with our clients to design optimal organizational structures, roles and responsibilities.
+                    </span>
                 </TextItem>
+
+                <TextItem>
+                    <h1>
+                        Talent Management Practice
+                    </h1>
+
+                    <span>
+                        We help managers to reveal untapped capability in their people. We work with leaders to remove bureaucracy and create value through a clear and present focus on accountability. And we help organizations build teams and strengthen relationships so that each level adds value, is appropriately rewarded, and contributes to the resilience of the whole.
+                        Organizations need to champion and develop the leaders we need now. Inclusive leaders, from diverse backgrounds and perspectives. Game-changers. Implementers. We help organizations better understand people and create the conditions for each leader to unleash their potential.
+                    </span>
+                </TextItem>
+
+                <TextItem>
+                    <h1>
+                        Reward Practice
+                    </h1>
+
+                    <span style={{textDecoration: 'underline'}}>
+                        Our salary research gives your HR team the confidence to create sound compensation structures, determine salary premiums for in-demand work, and implement other important aspects related to employee compensation. No matter the size or scope of your data needs, we can help you understand current salary research trends in the market to set you apart from your competitors.
+                    </span>
+                </TextItem>
+            </div>
+
+            <div ref={aboutRef} className={styles.about}>
+                <h1>
+                    ABOUT
+                </h1>
+
+                <div className={styles.about_item}>
+                    <span>
+                        Elena Baryshnikova – Managing Partner, leader of the organizational effectiveness practice. Photo and short resume. Below is the link - download CV - the full version of the CV is downloaded
+                    </span>
+
+                    <span> </span>
+
+                    <Link href={'/workers/elena-baryshnikova'}>
+                        there
+                    </Link>
+
+                    <span>.</span>
+                </div>
+
+                <div className={styles.about_item}>
+                    <span>
+                        Marzhan Nazarova is a leader in the remuneration management practice. Photo and short resume. Below is the link - download CV - the full version of the CV is downloaded
+                    </span>
+
+                    <span> </span>
+
+                    <Link href={'/workers/marzhan-nazarova'}>
+                        there
+                    </Link>
+
+                    <span>
+                        .
+                    </span>
+                </div>
             </div>
 
             <div ref={clientsRef} className={styles.projects}>

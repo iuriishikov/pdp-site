@@ -26,6 +26,8 @@ body {
 h1 {
     font-family: martin-mono;
     font-weight: 300;
+    word-break: break-word;
+    hyphens: auto;
     font-size: 40px;
 }
 

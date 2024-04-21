@@ -9,8 +9,7 @@ export default function Resume({
     postName,
     workerBio,
     workerName,
-    workerTitle,
-    messangerUrl,
+    contactUrl,
 }) {
 
     function resend() {
@@ -20,7 +19,7 @@ export default function Resume({
     }
 
     function intoMessanger() {
-        window.location.href = messangerUrl
+        window.location.href = contactUrl
     }
 
     const {width: photoWidth, ref: photoRef} = useElementSize()
@@ -36,7 +35,7 @@ export default function Resume({
 
                 <div className={styles.contact_buttons}>
                     <Button onClick={intoMessanger}>
-                        Messanger
+                        Contact
                     </Button>
 
                     <Button onClick={resend}>
