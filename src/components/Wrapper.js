@@ -66,6 +66,10 @@ function Footer() {
             <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
                 Site created by
             </a>
+
+            <Link href={'/'} className={styles.footer_item}>
+                Home
+            </Link>
         </footer>
     )
 }

@@ -145,11 +145,22 @@
 }
 
 .project_logo {
-    height: 40px;
     width: auto;
     overflow: visible;
     box-sizing: border-box;
     fill: #000;
+}
+
+@media screen and (max-width: 1024px) {
+    .project_logo {
+        height: 30px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .project_logo {
+        height: 40px;
+    }
 }
 
 .project_card {

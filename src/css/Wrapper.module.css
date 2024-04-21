@@ -16,7 +16,18 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
-    padding-top: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+    .root {
+        padding-top: 100px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .root {
+        padding-top: 30px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
