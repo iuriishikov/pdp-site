@@ -6,8 +6,7 @@
     user-select: none;
     box-sizing: border-box;
     position: relative;
-    max-width: 2000px;
-    gap: 40px;
+    gap: 100px;
 }
 
 .texts, .label, .about {
@@ -38,7 +37,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px;
     box-sizing: border-box;
     padding-top: 100px;
 }
@@ -155,13 +154,8 @@
 
 .project_card {
     box-sizing: border-box;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .project_name {

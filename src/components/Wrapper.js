@@ -73,12 +73,12 @@ function Footer() {
 export default function Wrapper({children}) {
     return (
         <MantineProvider>
-            <div className={styles.container}>
-                <div className={styles.children}>
+            <div className={styles.root}>
+                <div className={styles.container}>
                     {children}
-                </div>
 
-                <Footer/>
+                    <Footer/>
+                </div>
             </div>
         </MantineProvider>
     )

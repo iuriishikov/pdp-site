@@ -16,6 +16,12 @@ import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
 import Link from "next/link";
 import PhilipMorrisLogo from '@/icons/philip-morris-logo.svg'
+import RZDLogo from '@/icons/rzd-logo.svg'
+import DomodedovoLogo from '@/icons/domodedovo-logo.svg'
+import IBSLogo from '@/icons/ibs-logo.svg'
+import RUSNanoLogo from '@/icons/rusnano-logo.svg'
+import JCSLogo from '@/icons/jcs-logo.svg'
+import MerzPharmaLogo from '@/icons/merz-pharma-logo.svg'
 
 
 
@@ -166,53 +172,45 @@ export default function Feed({}) {
             <div className={styles.projects}>
                 <h1>CLIENTS</h1>
 
-                <Marquee speed={100}>
+                <Marquee autoFill={true} speed={100}>
                     <div className={styles.project_card}>
                         <MicrosoftLogo classNmae={styles.project_logo}/>
-
-                        <div className={styles.project_name}>
-                            Microsoft
-                        </div>
                     </div>
 
                     <div className={styles.project_card}>
                         <NestleLogo className={styles.project_logo}/>
-
-                        <div className={styles.project_name}>
-                            Nestle
-                        </div>
                     </div>
 
                     <div className={styles.project_card}>
                         <SchneiderElectricLogo className={styles.project_logo}/>
-
-                        <div className={styles.project_name}>
-                            Schneider Electric
-                        </div>
                     </div>
 
                     <div className={styles.project_card}>
-                        <PhilipMorrisLogo className={styles.project_logo} />
-
-                        <div className={styles.project_name}>
-                            Philip Morris
-                        </div>
+                        <SABMillerLogo className={styles.project_logo}/>
                     </div>
 
                     <div className={styles.project_card}>
-                        <SABMillerLogo className={styles.project_logo} />
-
-                        <div className={styles.project_name}>
-                            SABMiller
-                        </div>
+                        <BTLogo className={styles.project_logo}/>
                     </div>
 
                     <div className={styles.project_card}>
-                        <BTLogo style={{height: 30}} className={styles.project_logo} />
+                        <RZDLogo className={styles.project_logo}/>
+                    </div>
 
-                        <div className={styles.project_name}>
-                            B&T
-                        </div>
+                    <div className={styles.project_card}>
+                        <DomodedovoLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <IBSLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <JCSLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <MerzPharmaLogo className={styles.project_logo}/>
                     </div>
                 </Marquee>
             </div>
