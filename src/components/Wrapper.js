@@ -38,9 +38,19 @@ function Header() {
 }
 
 function Footer() {
-    const [emailTitle, setEmailTitle] = useState('')
+    const [emailSubject, setEmailSubject] = useState('')
     const [emailBody, setEmailBody] = useState('')
     const [emailAuthor, setEmailAuthor] = useState('')
+
+    function sendEmail() {
+        const encodedSubject = encodeURI(emailSubject)
+        const encodedBody = encodeURI(emailBody)
+        const encodedAuthor = encodeURI(emailAuthor)
+
+        const url = `mailto:info@pdp.group?subject=${encodedSubject}&body=${encodedBody}&from=${encodedAuthor}`
+
+        window.open(url)
+    }
 
     return (
         <footer className={styles.footer}>
@@ -55,11 +65,11 @@ function Footer() {
             <div className={styles.footer_email_form}>
                 <Input value={emailAuthor} onChange={(event) => setEmailAuthor(event.target.value)} placeholder={'Who are you?'} />
 
-                <Input value={emailTitle} onChange={(event) => setEmailTitle(event.target.value)} placeholder={'Subject'} />
+                <Input value={emailSubject} onChange={(event) => setEmailSubject(event.target.value)} placeholder={'Subject'} />
 
                 <Input value={emailBody} onChange={(event) => setEmailBody(event.target.value)} multiStrokes={true} placeholder={'Text'} />
 
-                <Button disabled={!emailBody || !emailTitle || !emailAuthor}>
+                <Button onClick={sendEmail} disabled={!emailBody || !emailSubject || !emailAuthor}>
                     Send
                 </Button>
             </div>
@@ -73,7 +83,9 @@ export default function Wrapper({children}) {
             <div className={styles.container}>
                 <Header/>
 
-                {children}
+                <div className={styles.children}>
+                    {children}
+                </div>
 
                 <Footer />
             </div>

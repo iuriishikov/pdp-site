@@ -1,47 +1,16 @@
 'use client'
 import React from 'react'
 import styles from '@/css/Feed.module.css'
-import ReactCurvedText from "react-curved-text";
+import Marquee from "react-fast-marquee";
 import {useEffect, useState} from "react";
 import {useIntersection, useViewportSize, useWindowScroll} from "@mantine/hooks";
 import {Transition} from "@mantine/core";
 import dynamic from 'next/dynamic';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import butterflyAnimationData from '@/animations/butterfly.json'
-import Link from "next/link";
-import Image from 'next/image'
 import 'swiper/css';
-import MicrosoftLogo from '@/icons/miscrosoft-logo.svg'
-import PhilipsLogo from '@/icons/philips-logo.svg'
-import NestleLogo from '@/icons/nestle-logo.svg'
-import {Autoplay} from "swiper/modules";
-import {Swiper, SwiperSlide} from "swiper/react";
 
-function CurvedText({children, cx=0, width=0, height=0, cy=0, rx=0, ry=0}) {
-    const [wasInViewport, setWasInViewport] = useState(false)
-    const {width: viewportWidth, height: viewportHeight} = useViewportSize()
 
-    return (
-        <div className={styles.curved_item}>
-            <ReactCurvedText
-                width={width}
-                height={height}
-                cx={cx}
-                cy={cy}
-                rx={rx}
-                ry={ry}
-                startOffset={50}
-                reversed={false}
-                text={children}
-                textProps={{ style: { fontSize: 'inherit' } }}
-                textPathProps={null}
-                tspanProps={null}
-                ellipseProps={null}
-                svgProps={null}
-            />
-        </div>
-    )
-}
 
 function TextItem({children}) {
     const [wasInViewport, setWasInViewport] = useState(false)
@@ -71,6 +40,9 @@ function TextItem({children}) {
         </div>
     )
 }
+
+const projectsNames = [
+    "Microsoft", "Schneider Electric", "SABMiller", "Nestle", "Pfizer", "Sanofi", "IRISPHARMA", "Merz Pharma", "Philip Morris", "BI-Group", "B&T", "IBS", "Russian Railways", "Locomotive Technologies", "Helicopter Technologies", "Regional Electric Networks JSC", "Composite Holding Company", "KMG", "Kegok", "KTZ", "KAP", "UHC", "Megapolis Group of Companies", "Domodedovo", "Rusnano", "Supreme Court of the Republic of Kazakhstan", "Ministry of Health of the Republic of Kazakhstan"]
 
 export default function Feed({}) {
 
@@ -116,37 +88,17 @@ export default function Feed({}) {
                 </TextItem>
             </div>
 
-            {/*<div className={styles.projects_container}>*/}
-            {/*    <div className={styles.projects_label}>*/}
-            {/*        PROJECTS*/}
-            {/*    </div>*/}
+            <div className={styles.projects}>
+                <h1>PROJECTS</h1>
 
-            {/*    <Swiper*/}
-            {/*        centeredSlides={true}*/}
-            {/*        // autoplay={{*/}
-            {/*        //     delay: 500,*/}
-            {/*        //     disableOnInteraction: false,*/}
-            {/*        // }}*/}
-            {/*        // modules={[Autoplay]}*/}
-            {/*        slidesPerView={'auto'}*/}
-            {/*        // loop={true}*/}
-            {/*        direction={'horizontal'}*/}
-            {/*        spaceBetween={30}*/}
-            {/*        className={styles.projects_swiper}*/}
-            {/*    >*/}
-            {/*        <SwiperSlide className={styles.project}>*/}
-            {/*            <MicrosoftLogo className={styles.project_logo} />*/}
-            {/*        </SwiperSlide>*/}
-
-            {/*        <SwiperSlide className={styles.project}>*/}
-            {/*            <PhilipsLogo className={styles.project_logo} />*/}
-            {/*        </SwiperSlide>*/}
-
-            {/*        <SwiperSlide className={styles.project}>*/}
-            {/*            <NestleLogo className={styles.project_logo} />*/}
-            {/*        </SwiperSlide>*/}
-            {/*    </Swiper>*/}
-            {/*</div>*/}
+                <Marquee speed={100}>
+                    {projectsNames.map((projectName) =>
+                        <div key={projectName} className={styles.project_name}>
+                            {projectName}
+                        </div>
+                    )}
+                </Marquee>
+            </div>
         </div>
     )
 }
