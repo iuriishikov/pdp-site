@@ -8,35 +8,7 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import '@/app/globals.css'
 
-function Header() {
-    const [scroll, setScroll] = useWindowScroll()
 
-    function handleShare() {
-        const url = window.location.href
-
-        navigator.share({url: url})
-    }
-
-    return (
-        <header data-is-mounted={(scroll.y < 70).toString()} className={styles.header}>
-            <Link href={'/'} className={styles.header_item}>
-                Home
-            </Link>
-
-            <Link href={'/'} onClick={handleShare} className={styles.header_item}>
-                Share
-            </Link>
-
-            <Link href={'/about'} className={styles.header_item}>
-                About
-            </Link>
-
-            <Link href={'/clients'} className={styles.header_item}>
-                Clients
-            </Link>
-        </header>
-    )
-}
 
 function ContactForm() {
     const [emailSubject, setEmailSubject] = useState('')
@@ -102,8 +74,6 @@ export default function Wrapper({children}) {
     return (
         <MantineProvider>
             <div className={styles.container}>
-                <Header/>
-
                 <div className={styles.children}>
                     {children}
                 </div>

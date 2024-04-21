@@ -33,12 +33,11 @@ function TextItem({children}) {
     }, [triggerEntry])
 
     return (
-        <div style={{minHeight: 10}} ref={triggerRef}>
+        <div style={{minHeight: 200}} ref={triggerRef}>
             <Transition duration={3000} transition={'fade'} mounted={wasInViewport}>
                 {(transtionStyles) =>
                     <div style={transtionStyles} className={styles.text_item_root}>
                         <div className={styles.text_item}>
-                            {width}
                             {children}
                         </div>
                     </div>
@@ -49,17 +48,7 @@ function TextItem({children}) {
 }
 
 
-export default function Feed({target}) {
-    useEffect(() => {
-        if (target === 'about') {
-            scrollToAbout()
-        } else if (target === 'clients') {
-            scrollToClients()
-        }
-    }, [target])
-
-    const {scrollIntoView: scrollToClients, targetRef: clientsRef} = useScrollIntoView({offset: 0})
-    const {scrollIntoView: scrollToAbout, targetRef: aboutRef} = useScrollIntoView({offset: 0})
+export default function Feed({}) {
 
     return (
         <div className={styles.container}>
@@ -137,7 +126,7 @@ export default function Feed({target}) {
                 </TextItem>
             </div>
 
-            <div ref={aboutRef} className={styles.about}>
+            <div className={styles.about}>
                 <h1>
                     ABOUT
                 </h1>
@@ -173,7 +162,7 @@ export default function Feed({target}) {
                 </div>
             </div>
 
-            <div ref={clientsRef} className={styles.projects}>
+            <div className={styles.projects}>
                 <h1>CLIENTS</h1>
 
                 <Marquee speed={100}>
