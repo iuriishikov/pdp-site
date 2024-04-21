@@ -26,12 +26,8 @@ function Header() {
                 About
             </Link>
 
-            <Link href={'/projects'} className={styles.header_item}>
-                Projects
-            </Link>
-
-            <Link href={'/contact'} className={styles.header_item}>
-                Contact
+            <Link href={'/clients'} className={styles.header_item}>
+                Clients
             </Link>
         </header>
     )
