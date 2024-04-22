@@ -26,7 +26,7 @@ body {
 h1 {
     font-family: martin-mono;
     font-weight: 300;
-    hyphens: auto;
+    hyphens: none;
 }
 
 @media screen and (max-width: 1024px) {

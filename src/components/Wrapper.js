@@ -86,10 +86,10 @@ function Footer() {
             </Link>
 
             <div className={styles.footer_item}>
-                ©2004-2024 PDP Authorship
+                ©2004-2024 PDP
             </div>
 
-            <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
+            <a style={{fontSize: 14}} href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
                 Site created by S.Y.V
             </a>
         </footer>
