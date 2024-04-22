@@ -87,6 +87,22 @@ export default function Feed({}) {
                     <span>was created in 2004 and is operating now in 3 continents. More than 20 years we help our clients to make the world a better place by making the structure of their companies and management principals more equitable.</span>
                 </TextItem>
 
+                <h1>
+                    PRACTISES
+                </h1>
+
+                <TextItem>
+                    <h1>
+                        Executive Search Practice
+                    </h1>
+
+                    <span>
+                        Connecting the right people with the right roles drives productivity, happiness and retention. Understand what really motivates your people, and try new ways of hiring to meet your changing business needs.
+                        The world has changed. People are struggling to cope with the level of disruption and uncertainty we face every day. And more change is likely to come. We need leaders who can bring us out the other side. Not just so we survive, but so we thrive.
+                        We help to hire the right people to the right positions.
+                    </span>
+                </TextItem>
+
                 <TextItem>
                     We are a values-driven organization and work to meet the highest professional and ethical standards.
                 </TextItem>
@@ -102,12 +118,23 @@ export default function Feed({}) {
                         Organizational Effectiveness Practice
                     </h1>
 
-                    <span>
-                        «Culture eats strategy for breakfast»
-                        Peter Drucker
-                        We are engaged in management consulting, including the development and implementation of strategies, increasing government and organizational effectiveness, optimizing organizational structures and management changes.
+                    <p style={{fontStyle: 'italic'}}>
+                        «Culture eats strategy for breakfast»  Peter Drucker
+                    </p>
 
+                    <p>
+                        We are engaged in management consulting, including the development and implementation of strategies, increasing government and organizational effectiveness, optimizing organizational structures and management changes.
                         It is important to us to bring value to our clients. We work with our clients to design optimal organizational structures, roles and responsibilities.
+                    </p>
+                </TextItem>
+
+                <TextItem>
+                    <h1>
+
+                    </h1>
+
+                    <span>
+
                     </span>
                 </TextItem>
 
@@ -124,10 +151,10 @@ export default function Feed({}) {
 
                 <TextItem>
                     <h1>
-                        Reward Practice
+                        Remuniration Practice
                     </h1>
 
-                    <span style={{textDecoration: 'underline'}}>
+                    <span>
                         Our salary research gives your HR team the confidence to create sound compensation structures, determine salary premiums for in-demand work, and implement other important aspects related to employee compensation. No matter the size or scope of your data needs, we can help you understand current salary research trends in the market to set you apart from your competitors.
                     </span>
                 </TextItem>
@@ -140,7 +167,7 @@ export default function Feed({}) {
 
                 <div className={styles.about_item}>
                     <span>
-                        Elena Baryshnikova – Managing Partner, leader of the organizational effectiveness practice. Photo and short resume. Below is the link - download CV - the full version of the CV is downloaded
+                        Elena Baryshnikova – Managing Partner, leader of the organizational effectiveness practice. The full version of the CV is downloaded
                     </span>
 
                     <span> </span>
@@ -154,7 +181,7 @@ export default function Feed({}) {
 
                 <div className={styles.about_item}>
                     <span>
-                        Marzhan Nazarova is a leader in the remuneration management practice. Photo and short resume. Below is the link - download CV - the full version of the CV is downloaded
+                        Marzhan Nazarova is a leader in the remuneration management practice. Photo and short resume. The full version of the CV is downloaded
                     </span>
                 
                     <span> </span>

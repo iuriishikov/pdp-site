@@ -36,16 +36,29 @@ function ContactForm() {
             </a>
 
             <div className={styles.footer_email_form}>
-                <Input value={emailAuthor} onChange={(event) => setEmailAuthor(event.target.value)}
-                       placeholder={'Who are you?'}/>
+                <Input
+                    value={emailAuthor}
+                    onChange={(event) => setEmailAuthor(event.target.value)}
+                    placeholder={'Who are you?'}
+                />
 
-                <Input value={emailSubject} onChange={(event) => setEmailSubject(event.target.value)}
-                       placeholder={'Subject'}/>
+                <Input
+                    value={emailSubject}
+                    onChange={(event) => setEmailSubject(event.target.value)}
+                    placeholder={'Subject'}
+                />
 
-                <Input value={emailBody} onChange={(event) => setEmailBody(event.target.value)} multiStrokes={true}
-                       placeholder={'Text'}/>
+                <Input
+                    value={emailBody}
+                    onChange={(event) => setEmailBody(event.target.value)}
+                    multiStrokes={true}
+                    placeholder={'Text'}
+                />
 
-                <Button onClick={sendEmail} disabled={!emailBody || !emailSubject || !emailAuthor}>
+                <Button
+                    onClick={sendEmail}
+                    disabled={!emailBody || !emailSubject || !emailAuthor}
+                >
                     Send
                 </Button>
             </div>
@@ -54,7 +67,6 @@ function ContactForm() {
 }
 
 function Footer() {
-
     return (
         <footer className={styles.footer}>
             <ContactForm />
@@ -70,6 +82,18 @@ function Footer() {
             <Link href={'/'} className={styles.footer_item}>
                 Home
             </Link>
+
+            <a href='tel:+16147495620' className={styles.footer_email}>
+                North America +16147495620
+            </a>
+
+            <a href='tel:+79057762787' className={styles.footer_email}>
+                Europe +79057762787
+            </a>
+
+            <a href='tel:+77068415555' className={styles.footer_email}>
+                Central Asia +77068415555
+            </a>
         </footer>
     )
 }
