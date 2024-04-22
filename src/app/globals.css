@@ -26,9 +26,19 @@ body {
 h1 {
     font-family: martin-mono;
     font-weight: 300;
-    word-break: break-word;
     hyphens: auto;
-    font-size: 40px;
+}
+
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
 }
 
 a {

@@ -20,7 +20,7 @@ export default function Page() {
     return (
         <Resume
             workerName={'ELENA BARYSHNIKOVA'}
-            workerTitle={'SEO'}
+            workerTitle={'CEO'}
             postName={'SEO'}
             workerBio={'Organizational development consultant, expert in building effective teams and developing competencies of first leaders. Former partner of the BIOSS Institute (Institute for Organizational and Social Studies of the National School of Government of Great Britain - a world leader in building effective organizational structures and assessing the management potential of global leaders, works with government and large commercial organizations in the U.S., UK and other countries).\n' +
                 'Author of a monograph on the technology of the assessment center "Personnel assessment by the method of the assessment center. Best HR-strategies" (published in 2013 by Mann, Ivanov and Ferber).\n' +
