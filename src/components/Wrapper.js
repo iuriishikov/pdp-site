@@ -90,7 +90,7 @@ function Footer() {
             </div>
 
             <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
-                Site created by
+                Site created by S.Y.V
             </a>
         </footer>
     )

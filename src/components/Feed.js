@@ -175,6 +175,20 @@ export default function Feed({}) {
 
                 <div className={styles.about_item}>
                     <span>
+                        Irina Kondratova is a Partner and leader of the Digital Operations practice. Photo and short resume. The full version of the CV is downloaded
+                    </span>
+
+                    <span> </span>
+
+                    <Link href={'/team/members/irina-kondratova'}>
+                        there
+                    </Link>
+
+                    <span>.</span>
+                </div>
+
+                <div className={styles.about_item}>
+                    <span>
                         Marzhan Nazarova is a leader in the remuneration management practice. Photo and short resume. The full version of the CV is downloaded
                     </span>
                 
