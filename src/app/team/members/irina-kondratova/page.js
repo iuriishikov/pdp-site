@@ -52,7 +52,7 @@ export default function Page() {
                     </p>
 
                     <p>
-                        One of the largest outsourcing companies in the world Managed product portfolio; Implemented company’s digital transformation project. Implemented ERP and end-to-end analytics across the entire product creation chain based on Axapta (Microsoft) Result: Achieved annual staff productivity growth of up to 85% 2010, Business unit was the leader in efficiency and EBITDa growth in EMEA 2011, Joined Kelly Global's talent pool of top managers.
+                        One of the largest outsourcing companies in the world Managed product portfolio; Implemented company&prime;s digital transformation project. Implemented ERP and end-to-end analytics across the entire product creation chain based on Axapta (Microsoft) Result: Achieved annual staff productivity growth of up to 85% 2010, Business unit was the leader in efficiency and EBITDa growth in EMEA 2011, Joined Kelly Global&prime;s talent pool of top managers.
                     </p>
 
                     <p>
