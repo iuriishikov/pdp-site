@@ -10,18 +10,19 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import butterflyAnimationData from '@/animations/butterfly.json'
 import MicrosoftLogo from '@/icons/microsoft-logo.svg'
 import NestleLogo from '@/icons/nestle-logo.svg'
-import PhilipsLogo from '@/icons/philips-logo.svg'
+import KAZMunaiGazLogo from '@/icons/kuzmunai-gaz-logo.svg'
 import SABMillerLogo from '@/icons/sab-miller.svg'
 import SchneiderElectricLogo from '@/icons/schneider-electric-logo.svg'
 import BTLogo from '@/icons/b&t-logo.svg'
 import Link from "next/link";
-import PhilipMorrisLogo from '@/icons/philip-morris-logo.svg'
 import RZDLogo from '@/icons/rzd-logo.svg'
 import DomodedovoLogo from '@/icons/domodedovo-logo.svg'
 import IBSLogo from '@/icons/ibs-logo.svg'
-import RUSNanoLogo from '@/icons/rusnano-logo.svg'
 import JCSLogo from '@/icons/jcs-logo.svg'
 import MerzPharmaLogo from '@/icons/merz-pharma-logo.svg'
+import KegocLogo from '@/icons/kegoc-logo.svg'
+import KazatampromLogo from '@/icons/kazatomprom-logo.svg'
+import SamrukKazynaLogo from '@/icons/samruk-kazyna-logo.svg'
 
 
 
@@ -84,7 +85,19 @@ export default function Feed({}) {
             <div className={styles.texts}>
                 <TextItem>
                     <h1>PDP (Performance Development Partners) </h1>
-                    <span>was created in 2004 and is operating now in 3 continents. More than 20 years we help our clients to make the world a better place by making the structure of their companies and management principals more equitable.</span>
+                    <p>
+                        was created in 2004 and is operating now in 3 continents.
+                        More than 20 years we help our clients to make the world a better place by making the structure of their companies and management principals more equitable.
+                    </p>
+
+                    <p>
+                        We are a values-driven organization and work to meet the highest professional and ethical standards.
+                    </p>
+
+                    <p>
+                        We want to influence positive change in the world and help our clients in a rapidly changing world. We accelerate sustainable and inclusive growth and help our clients create meaningful and lasting change.
+                        Our mission is to help organizations, teams and people unlock their potential and achieve outstanding results.
+                    </p>
                 </TextItem>
 
                 <h1>
@@ -93,28 +106,6 @@ export default function Feed({}) {
 
                 <TextItem>
                     <h1>
-                        Executive Search Practice
-                    </h1>
-
-                    <span>
-                        Connecting the right people with the right roles drives productivity, happiness and retention. Understand what really motivates your people, and try new ways of hiring to meet your changing business needs.
-                        The world has changed. People are struggling to cope with the level of disruption and uncertainty we face every day. And more change is likely to come. We need leaders who can bring us out the other side. Not just so we survive, but so we thrive.
-                        We help to hire the right people to the right positions.
-                    </span>
-                </TextItem>
-
-                <TextItem>
-                    We are a values-driven organization and work to meet the highest professional and ethical standards.
-                </TextItem>
-
-                <TextItem>
-                    We want to influence positive change in the world and help our clients in a rapidly changing world. We accelerate sustainable and inclusive growth and help our clients create meaningful and lasting change.
-                    Our mission is to help organizations, teams and people unlock their potential and achieve outstanding results.
-                </TextItem>
-
-                <TextItem>
-                    <h1>
-                        Practices
                         Organizational Effectiveness Practice
                     </h1>
 
@@ -130,11 +121,13 @@ export default function Feed({}) {
 
                 <TextItem>
                     <h1>
-
+                        Executive Search Practice
                     </h1>
 
                     <span>
-
+                        Connecting the right people with the right roles drives productivity, happiness and retention. Understand what really motivates your people, and try new ways of hiring to meet your changing business needs.
+                        The world has changed. People are struggling to cope with the level of disruption and uncertainty we face every day. And more change is likely to come. We need leaders who can bring us out the other side. Not just so we survive, but so we thrive.
+                        We help to hire the right people to the right positions.
                     </span>
                 </TextItem>
 
@@ -162,7 +155,8 @@ export default function Feed({}) {
 
             <div className={styles.about}>
                 <h1>
-                    ABOUT
+                    Our team
+
                 </h1>
 
                 <div className={styles.about_item}>
@@ -197,7 +191,7 @@ export default function Feed({}) {
             </div>
 
             <div className={styles.projects}>
-                <h1>CLIENTS</h1>
+                <h1>Our clients</h1>
 
                 <Marquee autoFill={true} speed={100}>
                     <div className={styles.project_card}>
@@ -237,7 +231,23 @@ export default function Feed({}) {
                     </div>
 
                     <div className={styles.project_card}>
+                        <KAZMunaiGazLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
                         <MerzPharmaLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <KegocLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <SamrukKazynaLogo className={styles.project_logo}/>
+                    </div>
+
+                    <div className={styles.project_card}>
+                        <KazatampromLogo className={styles.project_logo}/>
                     </div>
                 </Marquee>
             </div>

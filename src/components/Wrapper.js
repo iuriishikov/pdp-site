@@ -27,41 +27,31 @@ function ContactForm() {
 
     return (
         <div className={styles.contact_form}>
-            <h1>
-                CONTACT
-            </h1>
+            <Input
+                value={emailAuthor}
+                onChange={(event) => setEmailAuthor(event.target.value)}
+                placeholder={'Who are you?'}
+            />
 
-            <a href='mailto:info@pdp.group' className={styles.footer_email}>
-                info@pdp.group
-            </a>
+            <Input
+                value={emailSubject}
+                onChange={(event) => setEmailSubject(event.target.value)}
+                placeholder={'Subject'}
+            />
 
-            <div className={styles.footer_email_form}>
-                <Input
-                    value={emailAuthor}
-                    onChange={(event) => setEmailAuthor(event.target.value)}
-                    placeholder={'Who are you?'}
-                />
+            <Input
+                value={emailBody}
+                onChange={(event) => setEmailBody(event.target.value)}
+                multiStrokes={true}
+                placeholder={'Text'}
+            />
 
-                <Input
-                    value={emailSubject}
-                    onChange={(event) => setEmailSubject(event.target.value)}
-                    placeholder={'Subject'}
-                />
-
-                <Input
-                    value={emailBody}
-                    onChange={(event) => setEmailBody(event.target.value)}
-                    multiStrokes={true}
-                    placeholder={'Text'}
-                />
-
-                <Button
-                    onClick={sendEmail}
-                    disabled={!emailBody || !emailSubject || !emailAuthor}
-                >
-                    Send
-                </Button>
-            </div>
+            <Button
+                onClick={sendEmail}
+                disabled={!emailBody || !emailSubject || !emailAuthor}
+            >
+                Send
+            </Button>
         </div>
     )
 }
@@ -69,22 +59,16 @@ function ContactForm() {
 function Footer() {
     return (
         <footer className={styles.footer}>
-            <ContactForm />
+            <h1>
+                Contact Us
+            </h1>
 
-            <div className={styles.footer_item}>
-                ©2004-2024 PDP Authorship
-            </div>
-
-            <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
-                Site created by
+            <a href='mailto:info@pdp.group' className={styles.footer_email}>
+                info@pdp.group
             </a>
 
-            <Link href={'/'} className={styles.footer_item}>
-                Home
-            </Link>
-
             <a href='tel:+16147495620' className={styles.footer_email}>
-                North America +16147495620
+                N-America +16147495620
             </a>
 
             <a href='tel:+79057762787' className={styles.footer_email}>
@@ -93,6 +77,20 @@ function Footer() {
 
             <a href='tel:+77068415555' className={styles.footer_email}>
                 Central Asia +77068415555
+            </a>
+
+            <ContactForm/>
+
+            <Link href={'/'} className={styles.footer_item}>
+                Home
+            </Link>
+
+            <div className={styles.footer_item}>
+                ©2004-2024 PDP Authorship
+            </div>
+
+            <a href={'https://t.me/yurrriiiyyy'} className={styles.footer_item}>
+                Site created by
             </a>
         </footer>
     )
