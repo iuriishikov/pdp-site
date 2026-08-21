@@ -1,0 +1,14 @@
+.label {
+  z-index: 2;
+  color: #000;
+}
+
+.label_regular {
+  font-family: var(--font-martin-mono);
+  font-size: 30px;
+}
+
+.label_italic {
+  font-size: 50px;
+  font-family: var(--font-dm-serif-display-italic);
+}

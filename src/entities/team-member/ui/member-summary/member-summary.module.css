@@ -1,0 +1,6 @@
+.about_item {
+  font-family: var(--font-martin-mono);
+  font-size: 20px;
+  user-select: text;
+  color: #000;
+}

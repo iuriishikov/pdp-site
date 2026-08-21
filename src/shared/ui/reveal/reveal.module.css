@@ -1,0 +1,34 @@
+.root {
+  /*
+     * Reserves space before the copy fades in so the surrounding layout does
+     * not jump. Matches the inline `minHeight: 200` this replaced.
+     */
+  min-height: 200px;
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  /*
+     * Picks up `flex-start` / `flex-end` set on `.root` by the parent's
+     * :nth-child rules, which is how blocks alternate sides.
+     */
+  justify-content: inherit;
+
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 3000ms;
+  transition-timing-function: ease;
+}
+
+.root[data-visible='true'] .inner {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner {
+    transition-duration: 0ms;
+  }
+}

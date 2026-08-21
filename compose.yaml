@@ -1,0 +1,91 @@
+# Production stack: the Next.js server behind Caddy.
+#
+# Copy this file, `caddy/Caddyfile` and `.env` to the server. Nothing else is
+# needed there — the image is built in CI and pulled from the registry.
+#
+#   docker compose up -d --wait
+name: pdp
+
+services:
+  web:
+    image: ${IMAGE:?set IMAGE, e.g. ghcr.io/iuriishikov/pdp-site:latest}
+    # Always re-check the registry, so `up -d` after a new push really rolls.
+    pull_policy: always
+    restart: unless-stopped
+    # PID 1 that reaps zombies and forwards signals, so SIGTERM reaches Node.
+    init: true
+    expose:
+      # Internal only. The Next.js port is never published to the host; Caddy
+      # is the sole ingress.
+      - '3000'
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+      HOSTNAME: '0.0.0.0'
+      NEXT_TELEMETRY_DISABLED: '1'
+    env_file:
+      - path: .env
+        required: false
+    networks:
+      - edge
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+      start_interval: 2s
+    stop_grace_period: 30s
+    logging:
+      driver: json-file
+      options: { max-size: '10m', max-file: '3' }
+
+  caddy:
+    image: caddy:2.11-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        # Do not start accepting traffic until the app can actually serve it.
+        condition: service_healthy
+        restart: true
+    cap_add:
+      # Lets Caddy raise the UDP buffer sizes HTTP/3 wants.
+      - NET_ADMIN
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    environment:
+      ACME_EMAIL: ${ACME_EMAIL:?set ACME_EMAIL for Let is Encrypt registration}
+    volumes:
+      # Mount the directory, not the file: editors that replace the inode on
+      # save would otherwise break Caddy's graceful reload.
+      - ./caddy:/etc/caddy:ro
+      # Issued certificates and account keys. Losing this volume means
+      # re-issuing every certificate and burning ACME rate limits.
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - edge
+    healthcheck:
+      test:
+        ['CMD', 'wget', '--no-verbose', '--spider', '--tries=1', 'http://127.0.0.1:2019/metrics']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options: { max-size: '10m', max-file: '3' }
+
+networks:
+  edge:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:

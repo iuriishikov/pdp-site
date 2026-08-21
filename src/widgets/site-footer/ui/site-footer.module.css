@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    align-items: flex-start;
+  }
+}
+
+.footer_email {
+  font-family: var(--font-martin-mono);
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.footer_item {
+  font-family: var(--font-martin-mono);
+  font-size: 20px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.footer_credit {
+  font-size: 14px;
+}

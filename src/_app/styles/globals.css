@@ -1,0 +1,55 @@
+/*
+ * Global stylesheet.
+ *
+ * There are no `@font-face` rules here any more: `next/font/local` generates
+ * them at build time from `shared/fonts`, which also fingerprints the files,
+ * emits preload hints and supplies a metric-matched fallback. Stylesheets
+ * reach the families through the `--font-*` custom properties.
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  /*
+     * The palette is light-only. Declaring it stops browsers in dark mode from
+     * re-colouring form controls against a background that never changes.
+     */
+  color-scheme: light;
+  background: linear-gradient(90deg, #ffffff, #ffda8a);
+}
+
+h1 {
+  font-family: var(--font-martin-mono);
+  font-weight: 300;
+  hyphens: none;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+a {
+  text-decoration: underline;
+  transition-duration: 300ms;
+  color: #000;
+  cursor: pointer;
+  text-decoration-color: rgba(0, 0, 0, 0.4);
+}
+
+a:hover {
+  text-decoration-color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition-duration: 0ms;
+  }
+}

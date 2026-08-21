@@ -1,0 +1,6 @@
+# The checks that are cheap enough to run before a push and expensive to
+# discover in CI. The full suite (including the build and end-to-end tests)
+# runs in CI.
+pnpm run typecheck
+pnpm run lint:fsd
+pnpm run test

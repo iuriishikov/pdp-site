@@ -1,0 +1,36 @@
+# Keep the build context small and the image reproducible. Anything the build
+# needs is installed inside the container, not copied from the host.
+
+.git
+.github
+.claude
+
+node_modules
+.next
+out
+build
+coverage
+playwright-report
+test-results
+blob-report
+playwright/.cache
+
+# Host node_modules would carry the wrong platform binaries (sharp, SWC).
+**/node_modules
+
+.env
+.env.*
+!.env.example
+
+Dockerfile
+.dockerignore
+compose.yaml
+caddy
+
+README.md
+*.md
+.idea
+.vscode
+.DS_Store
+npm-debug.log*
+pnpm-debug.log*

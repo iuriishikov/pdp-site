@@ -1,0 +1,16 @@
+# pnpm 11 reads project-level settings from this file, not from a `pnpm` key in
+# package.json.
+
+# pnpm refuses to run dependency lifecycle scripts unless they are listed here,
+# so a compromised transitive package cannot execute code at install time.
+# `unrs-resolver` needs its postinstall to select the right prebuilt native
+# binary; it backs eslint-import-resolver-typescript.
+allowBuilds:
+  unrs-resolver: true
+
+# `eslint-plugin-react-hooks@7.1.1` imports `zod-validation-error/v4`, but its
+# declared range (`^3.5.0 || ^4.0.0`) also admits 3.x, which exposes no such
+# subpath — resolving to 3.x makes ESLint fail to start with
+# ERR_PACKAGE_PATH_NOT_EXPORTED. Pin to the major that actually has it.
+overrides:
+  zod-validation-error: ^4.0.0

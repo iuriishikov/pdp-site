@@ -1,0 +1,69 @@
+.root {
+  /* Reset the user-agent button styling; the visible surface is `.button`. */
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  /* Overrides the global `a { text-decoration: underline }`. */
+  text-decoration: none;
+
+  /* `block` for both elements: <a> would otherwise be inline. */
+  display: block;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  cursor: pointer;
+}
+
+.root:active {
+  font-style: italic;
+  transform: scale(0.9);
+}
+
+.root:disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.root:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
+.shadow {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.button {
+  /* Matches the user-agent default for <button>, which this used to be. */
+  box-sizing: border-box;
+
+  background: #fff;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-martin-mono);
+  font-size: 20px;
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root:active {
+    transform: none;
+  }
+}

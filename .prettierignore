@@ -1,0 +1,11 @@
+.next
+out
+build
+coverage
+node_modules
+pnpm-lock.yaml
+playwright-report
+test-results
+public
+src/shared/assets
+next-env.d.ts

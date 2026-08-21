@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  box-sizing: border-box;
+  position: relative;
+  gap: 100px;
+}
+
+/* Decorative animation layer behind the whole page. */
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

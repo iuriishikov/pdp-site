@@ -1,0 +1,150 @@
+name: CD
+
+# Every push to main that passes CI is built, published and rolled out.
+# `workflow_dispatch` allows a manual redeploy of the current main.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys race each other onto the same server. Deploys are not
+# cancelled in flight — a half-applied rollout is worse than a queued one.
+concurrency:
+  group: cd-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  # Runs the exact same checks as pull requests, so nothing reaches the server
+  # that would not have passed review.
+  verify:
+    name: Verify
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    name: Build and publish image
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      packages: write
+      # Required to attest where the image was built from.
+      id-token: write
+      attestations: write
+
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+      image: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive tags and labels
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          # Lower-cased automatically; GHCR rejects uppercase repository names.
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=long
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push
+        id: build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=${{ vars.SITE_URL || 'https://pdp.group' }}
+          # Layer cache in the GitHub Actions cache service. BuildKit cache
+          # mounts inside the Dockerfile are NOT exported by this — they only
+          # help local builds.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: true
+          sbom: true
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
+
+  deploy:
+    name: Roll out to production
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+      url: ${{ vars.SITE_URL || 'https://pdp.group' }}
+
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        env:
+          # Deploy the exact digest that was just built, not a moving tag: a
+          # tag could resolve to a different image by the time the server pulls.
+          IMAGE_REF: ghcr.io/${{ github.repository }}@${{ needs.publish.outputs.digest }}
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          envs: IMAGE_REF
+          script_stop: true
+          script: |
+            set -euo pipefail
+            cd "${{ secrets.DEPLOY_PATH }}"
+
+            # A repository-scoped PAT with read:packages. The workflow's own
+            # GITHUB_TOKEN cannot be used here: it is scoped to the run and
+            # expires when the run ends.
+            echo "${{ secrets.GHCR_PAT }}" \
+              | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
+            # `IMAGE` is what compose.yaml interpolates.
+            grep -v '^IMAGE=' .env > .env.next 2>/dev/null || true
+            echo "IMAGE=${IMAGE_REF}" >> .env.next
+            mv .env.next .env
+
+            docker compose pull
+            # --wait blocks until healthchecks pass, so a broken image fails
+            # the deploy instead of silently serving errors.
+            docker compose up -d --wait --wait-timeout 180
+
+            docker image prune -f --filter "until=168h"
+            docker logout ghcr.io
+
+      - name: Verify the site is serving
+        run: |
+          set -euo pipefail
+          url="${{ vars.SITE_URL || 'https://pdp.group' }}"
+          for attempt in 1 2 3 4 5; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 15 "$url/api/health" || echo 000)
+            if [ "$code" = "200" ]; then
+              echo "Health check passed (HTTP $code)"
+              exit 0
+            fi
+            echo "Attempt $attempt: HTTP $code — retrying"
+            sleep 10
+          done
+          echo "Site did not become healthy after deploy"
+          exit 1
