@@ -121,7 +121,10 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.DEPLOY_PORT || 22 }}
           envs: IMAGE_REF
-          script_stop: true
+          # No `script_stop` here: v1 dropped it and warns that the input is
+          # unrecognised. `set -euo pipefail` below already aborts the script
+          # on the first failing command, and the action fails the job with the
+          # script's exit code.
           script: |
             set -euo pipefail
             cd "${{ secrets.DEPLOY_PATH }}"
