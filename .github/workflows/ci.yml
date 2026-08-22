@@ -3,7 +3,10 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main, dev]
+    # `main` is deliberately absent: the deploy pipeline calls this workflow
+    # before shipping, so listing main here would run the whole suite —
+    # Playwright included — twice for every push to it.
+    branches: [dev]
   # Lets the deploy pipeline run exactly these checks before shipping, rather
   # than keeping a second copy of them in sync.
   workflow_call:

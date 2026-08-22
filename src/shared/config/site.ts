@@ -6,7 +6,7 @@
  * so the two can never drift apart.
  */
 
-const DEFAULT_URL = 'https://pdp.group'
+const DEFAULT_URL = 'https://pdp-consulting.com'
 
 /**
  * Resolves the public origin.

@@ -1,4 +1,4 @@
-# PDP — pdp.group
+# PDP — pdp-consulting.com
 
 Marketing site for PDP (Performance Development Partners): a homepage and three
 team member CV pages.
@@ -149,7 +149,7 @@ reproducible from a digest, and means a failed build never touches the server.
 push to main → CI (lint, architecture, types, unit, e2e, build)
              → build image, push to ghcr.io, attest provenance
              → ssh: docker compose pull && up -d --wait
-             → verify https://pdp.group/api/health
+             → verify https://pdp-consulting.com/api/health
 ```
 
 Deploys pin the **digest**, not a tag, so the server runs exactly the image CI
@@ -159,7 +159,7 @@ fails the deploy instead of quietly serving errors, and Caddy's
 
 ### One-time server setup
 
-1. Point `pdp.group` and `www.pdp.group` (A/AAAA) at the host, and open ports
+1. Point `pdp-consulting.com` and `www.pdp-consulting.com` (A/AAAA) at the host, and open ports
    80 and 443 (TCP **and** UDP 443 for HTTP/3).
 2. Install Docker Engine ≥ 28 with the Compose plugin.
 3. Copy `compose.yaml`, `caddy/Caddyfile` and `.env` into a directory — that
@@ -187,9 +187,9 @@ limits.
 `GITHUB_TOKEN` cannot be reused on the server: it is scoped to the workflow run
 and expires with it. Hence the separate PAT.
 
-| Variable   | Purpose                                         |
-| ---------- | ----------------------------------------------- |
-| `SITE_URL` | Public origin — defaults to `https://pdp.group` |
+| Variable   | Purpose                                                  |
+| ---------- | -------------------------------------------------------- |
+| `SITE_URL` | Public origin — defaults to `https://pdp-consulting.com` |
 
 ### Building the image locally
 

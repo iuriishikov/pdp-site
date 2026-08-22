@@ -9,8 +9,11 @@ name: pdp
 services:
   web:
     image: ${IMAGE:?set IMAGE, e.g. ghcr.io/iuriishikov/pdp-site:latest}
-    # Always re-check the registry, so `up -d` after a new push really rolls.
-    pull_policy: always
+    # `missing`, not `always`: the deploy script runs an explicit
+    # `docker compose pull` first, and every deploy names a new digest, so a
+    # fresh image is still fetched. `always` would additionally break bringing
+    # the stack up from an image that was loaded locally rather than pulled.
+    pull_policy: missing
     restart: unless-stopped
     # PID 1 that reaps zombies and forwards signals, so SIGTERM reaches Node.
     init: true

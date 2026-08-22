@@ -1,7 +1,12 @@
 # Caddy obtains and renews TLS certificates automatically. That needs:
-#   - A/AAAA records for both pdp.group and www.pdp.group pointing at this host
+#   - A/AAAA records for both pdp-consulting.com and www.pdp-consulting.com
+#     pointing at this host
 #   - ports 80 and 443 reachable from the internet
 #   - the caddy_data volume persisted across deploys
+#
+# Behind Cloudflare, set the records to "DNS only" (grey cloud) for the first
+# issuance, or set the SSL/TLS mode to Full (strict) — anything lower loops
+# redirects against the HTTPS redirect below.
 {
 	email {$ACME_EMAIL}
 	servers {
@@ -22,12 +27,12 @@
 	}
 }
 
-www.pdp.group {
+www.pdp-consulting.com {
 	import security_headers
-	redir https://pdp.group{uri} permanent
+	redir https://pdp-consulting.com{uri} permanent
 }
 
-pdp.group {
+pdp-consulting.com {
 	encode zstd gzip
 
 	import security_headers

@@ -71,7 +71,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_SITE_URL=${{ vars.SITE_URL || 'https://pdp.group' }}
+            NEXT_PUBLIC_SITE_URL=${{ vars.SITE_URL || 'https://pdp-consulting.com' }}
           # Layer cache in the GitHub Actions cache service. BuildKit cache
           # mounts inside the Dockerfile are NOT exported by this — they only
           # help local builds.
@@ -94,7 +94,7 @@ jobs:
     timeout-minutes: 15
     environment:
       name: production
-      url: ${{ vars.SITE_URL || 'https://pdp.group' }}
+      url: ${{ vars.SITE_URL || 'https://pdp-consulting.com' }}
 
     steps:
       - name: Deploy over SSH
@@ -136,7 +136,7 @@ jobs:
       - name: Verify the site is serving
         run: |
           set -euo pipefail
-          url="${{ vars.SITE_URL || 'https://pdp.group' }}"
+          url="${{ vars.SITE_URL || 'https://pdp-consulting.com' }}"
           for attempt in 1 2 3 4 5; do
             code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 15 "$url/api/health" || echo 000)
             if [ "$code" = "200" ]; then
