@@ -4,14 +4,19 @@ import { buildMailtoUrl } from './build-mailto-url'
 
 describe('buildMailtoUrl', () => {
   it('addresses the message to the given recipient', () => {
-    const url = buildMailtoUrl({ to: 'info@pdp.group', subject: 'Hi', body: 'Hello', from: 'Ada' })
+    const url = buildMailtoUrl({
+      to: 'info@pdp-consulting.com',
+      subject: 'Hi',
+      body: 'Hello',
+      from: 'Ada',
+    })
 
-    expect(url.startsWith('mailto:info@pdp.group?')).toBe(true)
+    expect(url.startsWith('mailto:info@pdp-consulting.com?')).toBe(true)
   })
 
   it('carries subject, body and sender through', () => {
     const url = buildMailtoUrl({
-      to: 'info@pdp.group',
+      to: 'info@pdp-consulting.com',
       subject: 'Hi',
       body: 'Hello',
       from: 'Ada',
@@ -27,7 +32,7 @@ describe('buildMailtoUrl', () => {
     // The regression this guards: `encodeURI` leaves & ? and = untouched, so a
     // subject like this used to truncate the body and inject a parameter.
     const url = buildMailtoUrl({
-      to: 'info@pdp.group',
+      to: 'info@pdp-consulting.com',
       subject: 'Pricing & terms?',
       body: 'a=1&b=2',
       from: 'Ada',
@@ -42,7 +47,7 @@ describe('buildMailtoUrl', () => {
   it('percent-encodes spaces rather than using "+"', () => {
     // Mail clients render a literal "+" in the subject line.
     const url = buildMailtoUrl({
-      to: 'info@pdp.group',
+      to: 'info@pdp-consulting.com',
       subject: 'two words',
       body: 'more words',
       from: 'Ada Lovelace',
@@ -54,7 +59,7 @@ describe('buildMailtoUrl', () => {
 
   it('keeps newlines in the body intact', () => {
     const url = buildMailtoUrl({
-      to: 'info@pdp.group',
+      to: 'info@pdp-consulting.com',
       subject: 'S',
       body: 'line one\nline two',
       from: 'Ada',

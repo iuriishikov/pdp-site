@@ -60,7 +60,7 @@ export type PhoneContact = {
 }
 
 export const contacts = {
-  email: 'info@pdp.group',
+  email: 'info@pdp-consulting.com',
   phones: [
     { region: 'N-America', number: '+16147495620' },
     { region: 'Europe', number: '+79057762787' },
