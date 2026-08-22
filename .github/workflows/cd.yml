@@ -80,7 +80,19 @@ jobs:
           provenance: true
           sbom: true
 
+      # GitHub's attestation API rejects user-owned private repositories:
+      #   "Failed to persist attestation: Feature not available for user-owned
+      #    private repositories."
+      # So this runs only where the API will accept it — a public repository,
+      # or one owned by an organisation. `continue-on-error` is the backstop:
+      # a signature is a nice-to-have, and losing it must never block a deploy.
+      #
+      # Note this is separate from `provenance: true` / `sbom: true` above,
+      # which embed SLSA provenance and an SBOM in the image manifest itself.
+      # Those work regardless and are where most of the value is.
       - name: Attest build provenance
+        if: ${{ github.event.repository.visibility != 'private' }}
+        continue-on-error: true
         uses: actions/attest-build-provenance@v4
         with:
           subject-name: ghcr.io/${{ github.repository }}
