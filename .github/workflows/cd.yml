@@ -129,12 +129,7 @@ jobs:
             set -euo pipefail
             cd "${{ secrets.DEPLOY_PATH }}"
 
-            # A repository-scoped PAT with read:packages. The workflow's own
-            # GITHUB_TOKEN cannot be used here: it is scoped to the run and
-            # expires when the run ends.
-            echo "${{ secrets.GHCR_PAT }}" \
-              | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
-
+            # The image is public, so the server pulls it without logging in.
             # `IMAGE` is what compose.yaml interpolates.
             grep -v '^IMAGE=' .env > .env.next 2>/dev/null || true
             echo "IMAGE=${IMAGE_REF}" >> .env.next
@@ -146,7 +141,6 @@ jobs:
             docker compose up -d --wait --wait-timeout 180
 
             docker image prune -f --filter "until=168h"
-            docker logout ghcr.io
 
       - name: Verify the site is serving
         run: |

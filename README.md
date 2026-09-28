@@ -181,11 +181,9 @@ limits.
 | `DEPLOY_SSH_KEY` | Private key for that user                      |
 | `DEPLOY_PORT`    | SSH port — optional, defaults to 22            |
 | `DEPLOY_PATH`    | Directory holding `compose.yaml` on the server |
-| `GHCR_USERNAME`  | GitHub username used to pull from GHCR         |
-| `GHCR_PAT`       | Personal access token with `read:packages`     |
 
-`GITHUB_TOKEN` cannot be reused on the server: it is scoped to the workflow run
-and expires with it. Hence the separate PAT.
+The image is public on GHCR, so the server pulls it without any registry
+credentials.
 
 | Variable   | Purpose                                                  |
 | ---------- | -------------------------------------------------------- |
