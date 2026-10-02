@@ -27,8 +27,8 @@
   "dependencies": {
     "lottie-react": "3.1.0",
     "next": "16.3.2",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-fast-marquee": "1.6.5",
     "react-textarea-autosize": "8.5.9"
   },
@@ -39,8 +39,8 @@
     "@playwright/test": "1.62.1",
     "@svgr/webpack": "8.1.0",
     "@types/node": "^24.13.3",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "eslint": "10.9.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.5",
